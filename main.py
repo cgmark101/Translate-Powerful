@@ -1,20 +1,32 @@
-# Import's and libraries
+#Import's and libraries
+import discord
 import os
 import random
-from dotenv import load_dotenv
+from discord import message
 from discord.ext import commands
+from discord.ext.commands.core import command
 from mtranslate import translate
 
-#Save token in secret file :)
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
 
-#Prefix bot
-bot = commands.Bot(command_prefix='t!')
 
-#Print log after bot run
-@bot.event
+#Prefix
+client = commands.Bot(command_prefix="!", description="Auto-translate Bot")
+
+@client.event
 async def on_ready():
-    print(f'{bot.user.name} has connected to Discord!')
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Test'))
+    msg = "Transitor online"
+    print(msg)
+    
+@client.command(name='en_es', help='Translate en-es')
+async def en_es(ctx, *, message=''):
+    text = ctx.message 
+    translate_en_es = translate(text, 'es', 'auto')
+    await ctx.send(translate_en_es)
+    
+    
 
-bot.run(TOKEN)
+    
+ #Token
+token = os.getenv("DISCORD_TOKEN") 
+client.run(token)
