@@ -6,6 +6,7 @@ from discord import message
 from discord.ext import commands
 from discord.ext.commands.core import check, command
 from mtranslate import translate
+from typing import Optional
 
 
 #Prefix
@@ -17,53 +18,19 @@ async def on_ready():
     msg = "Transitor online"
     print(msg)
 
+# Universal Translator
 @client.command()
-async def en_es(ctx):
-    await ctx.send('Now, Enter a phrase to translate ')
+async def trans(ctx, lang:Optional[str]='es'):
+    await ctx.send('Now, Enter a phrase to translate')
     
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
 
     msg = await client.wait_for("message", check=check)
-    translate_en_es = translate(msg.content, 'es', 'en')
+    translate_en_es = translate(msg.content, lang, 'auto')
     await ctx.send (translate_en_es)
-    
-@client.command()
-async def es_en(ctx):
-    await ctx.send('Ahora, ingresa la palabra a traducir ')
-    
-    def check(msg):
-        return msg.author == ctx.author and msg.channel == ctx.channel
 
-    msg = await client.wait_for("message", check=check)
-    translate_es_en = translate(msg.content, 'en', 'es')
-    await ctx.send (translate_es_en)
-    
-@client.command()
-async def fr_en(ctx):
-    await ctx.send('Entrez maintenant le mot à traduire ')
-    
-    def check(msg):
-        return msg.author == ctx.author and msg.channel == ctx.channel
 
-    msg = await client.wait_for("message", check=check)
-    translate_fr_en = translate(msg.content, 'fr', 'en')
-    await ctx.send (translate_fr_en)
-    
-@client.command()
-async def fr_es(ctx):
-    await ctx.send('Entrez maintenant le mot à traduire ')
-    
-    def check(msg):
-        return msg.author == ctx.author and msg.channel == ctx.channel
-
-    msg = await client.wait_for("message", check=check)
-    translate_fr_es = translate(msg.content, 'fr', 'es')
-    await ctx.send (translate_fr_es)
-    
-
-    
-    
 @client.command()
 async def command(ctx):
     computer = random.randint(1, 10)
