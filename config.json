@@ -1,5 +1,10 @@
 {
     "LANGUAGE_DEFAULT":"en",
     "PREFIX_DEFAULT":"!",
-    "VERSION":"1.0"
+    "Info": 
+    {
+        "Version":"1.0",
+        "Author":"Fabián#0069",
+        "Description":"Auto-translate bot opensource"
+    }
 }

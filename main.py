@@ -25,18 +25,44 @@ async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Test'))
     msg = "Transitor online"
     print(msg)
+    print(configData["LANGUAGE_DEFAULT"])
+      
+
+@client.command()
+async def language(ctx):
+    await ctx.send('Enter the new language, language endings can be found in the help command')
+    
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel
+    
+    msg = await client.wait_for("message", check=check)
+    if msg.content == 'es':
+        configData["LANGUAGE_DEFAULT"] = "es"
+        await ctx.send ('El idioma se ha configurado en español exitosamente')
+        print('El lenguaje se ha cambiado a español exitosamente')
+    
+    if msg.content == 'en':
+        configData["LANGUAGE_DEFAULT"] = "en"
+        await ctx.send('The language has been set in english successfully')
+        print('The language has been set in english successfully')
+        
+
+
+
+
 
 # Universal Translator
 @client.command()
-async def trans(ctx, lang:Optional[str]='es'):
-    await ctx.send('Now, Enter a phrase to translate')
+async def ts(ctx):
+    await ctx.send('Now, enter phrase to translate')
     
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
 
     msg = await client.wait_for("message", check=check)
-    translate_en_es = translate(msg.content, lang, 'auto')
-    await ctx.send (translate_en_es)
+    translator = translate(msg.content, configData["LANGUAGE_DEFAULT"], 'auto')
+    print(translator)
+    await ctx.send (translator)
 
     
  #Token
