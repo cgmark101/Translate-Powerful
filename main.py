@@ -8,7 +8,6 @@ from discord.ext.commands.core import check, command
 from mtranslate import translate
 
 
-
 #Prefix
 client = commands.Bot(command_prefix="!", description="Auto-translate Bot")
 
@@ -23,9 +22,9 @@ async def en_es(ctx):
     await ctx.send('Now, Enter the word to translate ')
     
     def check(msg):
-        return msg.author == ctx.author and msg.channel == ctx.channel
+        return msg.author == ctx.author and msg.content
     msg = await client.wait_for("message", check=check)
-    translate_en_es = translate(msg, 'es', 'auto')
+    translate_en_es = translate(msg.content, 'es', 'auto')
     await ctx.send (translate_en_es)
     
     
