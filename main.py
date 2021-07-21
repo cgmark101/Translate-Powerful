@@ -19,10 +19,11 @@ async def on_ready():
 
 @client.command()
 async def en_es(ctx):
-    await ctx.send('Now, Enter the word to translate ')
+    await ctx.send('Now, Enter a phrase to translate ')
     
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel and msg.content
+
     msg = await client.wait_for("message", check=check)
     translate_en_es = translate(msg.content, 'es', 'auto')
     await ctx.send (translate_en_es)
@@ -42,9 +43,7 @@ async def command(ctx):
         await ctx.send("Correct")
     else:
         await ctx.send(f"Nope it was {computer}")
-    
 
-    
     
  #Token
 token = os.getenv("DISCORD_TOKEN") 
