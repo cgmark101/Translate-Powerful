@@ -22,9 +22,10 @@ async def en_es(ctx):
     await ctx.send('Now, Enter a phrase to translate ')
     
     def check(msg):
-        return msg.author == ctx.author and msg.channel == ctx.channel and msg.content
+        return msg.author == ctx.author and msg.channel == ctx.channel
 
     msg = await client.wait_for("message", check=check)
+    print(msg)
     translate_en_es = translate(msg.content, 'es', 'auto')
     await ctx.send (translate_en_es)
     
