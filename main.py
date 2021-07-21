@@ -1,16 +1,24 @@
 #Import's and libraries
 import discord
 import os
-import random
+import json
 from discord import message
 from discord.ext import commands
 from discord.ext.commands.core import check, command
 from mtranslate import translate
 from typing import Optional
 
+#Json-Configs
+with open ("./config.json") as configjsonFile:
+    configData = json.load(configjsonFile)
+    LANGUAGE = configData["LANGUAGE_DEFAULT"]
+    
+with open ("./config.json") as f:
+    prefixes = json.load(f)
+    PREFIX = prefixes["PREFIX_DEFAULT"]
 
 #Prefix
-client = commands.Bot(command_prefix="!", description="Auto-translate Bot")
+client = commands.Bot(command_prefix=prefixes["PREFIX_DEFAULT"], description="Auto-translate Bot")
 
 @client.event
 async def on_ready():
@@ -29,22 +37,6 @@ async def trans(ctx, lang:Optional[str]='es'):
     msg = await client.wait_for("message", check=check)
     translate_en_es = translate(msg.content, lang, 'auto')
     await ctx.send (translate_en_es)
-
-
-@client.command()
-async def command(ctx):
-    computer = random.randint(1, 10)
-    await ctx.send('Guess my number')
-
-    def check(msg):
-        return msg.author == ctx.author and msg.channel == ctx.channel and int(msg.content) in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-    msg = await client.wait_for("message", check=check)
-
-    if int(msg.content) == computer:
-        await ctx.send("Correct")
-    else:
-        await ctx.send(f"Nope it was {computer}")
 
     
  #Token
