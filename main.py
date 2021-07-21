@@ -25,9 +25,43 @@ async def en_es(ctx):
         return msg.author == ctx.author and msg.channel == ctx.channel
 
     msg = await client.wait_for("message", check=check)
-    print(msg)
-    translate_en_es = translate(msg.content, 'es', 'auto')
+    translate_en_es = translate(msg.content, 'es', 'en')
     await ctx.send (translate_en_es)
+    
+@client.command()
+async def es_en(ctx):
+    await ctx.send('Ahora, ingresa la palabra a traducir ')
+    
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel
+
+    msg = await client.wait_for("message", check=check)
+    translate_es_en = translate(msg.content, 'en', 'es')
+    await ctx.send (translate_es_en)
+    
+@client.command()
+async def fr_en(ctx):
+    await ctx.send('Entrez maintenant le mot à traduire ')
+    
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel
+
+    msg = await client.wait_for("message", check=check)
+    translate_fr_en = translate(msg.content, 'fr', 'en')
+    await ctx.send (translate_fr_en)
+    
+@client.command()
+async def fr_es(ctx):
+    await ctx.send('Entrez maintenant le mot à traduire ')
+    
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel
+
+    msg = await client.wait_for("message", check=check)
+    translate_fr_es = translate(msg.content, 'fr', 'es')
+    await ctx.send (translate_fr_es)
+    
+
     
     
 @client.command()
