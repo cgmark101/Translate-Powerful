@@ -34,7 +34,7 @@ async def lang(ctx):
     
     msg = await client.wait_for("message", check=check, timeout=30)
 
-    if msg.content in configData["LANGUAGES"]:
+    if msg.content.lower() in configData["LANGUAGES"]:
         os.environ["LANG"] = msg.content
         LANG = configData["LANGUAGES"][msg.content]
         await ctx.send (LANG)
