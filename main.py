@@ -12,6 +12,7 @@ from typing import Optional
 with open ("./config.json") as configjsonFile:
     configData = json.load(configjsonFile)
     LANGUAGE = configData["LANGUAGE_DEFAULT"]
+    LANG_TS = configData["LANGUAGES_PHRASE"][LANGUAGE]
     PREFIX = configData["PREFIX_DEFAULT"]
 
 print(PREFIX)
@@ -53,7 +54,7 @@ async def lang(ctx):
 # Universal Translator
 @client.command()
 async def ts(ctx):
-    await ctx.send('Now, enter phrase to translate')
+    await ctx.send(LANG_TS)
     
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
