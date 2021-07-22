@@ -3,6 +3,7 @@ import discord
 import os
 import json
 from discord import message
+from discord.embeds import Embed
 from discord.ext import commands
 from discord.ext.commands.core import check, command
 from mtranslate import translate
@@ -50,6 +51,11 @@ async def lang(ctx):
     else:
         await ctx.send('The selected language does not exist, enter again, you can check in the help command to know the available languages')
         
+#help command
+@client.command()
+async def embed(ctx):
+    embed=discord.Embed(title="Help menu", url="https://realdrewdata.medium.com/", description="English - en", color=discord.Color.red())
+    await ctx.send(embed=embed)
 
 
 # Universal Translator
