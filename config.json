@@ -8,9 +8,11 @@
         "it": "La lingua è stata impostata correttamente su italiano", 
         "pt": "O idioma foi definido com sucesso para o português", 
         "de": "Die Sprache wurde erfolgreich auf Deutsch eingestell" , 
+        "ru": "Русский язык установлен успешно",
+        "sv": "Språket har ställts in på svenska framgångsrikt ",
         "ja": "言語が日本語に正常に設定されました", 
         "ko": "언어가 한국어로 성공적으로 설정되었습니다.", 
-        "cn": "语言已成功设置为普通话"
+        "zh-CN": "语言已成功设置为普通话"
     },
     "LANGUAGES_PHRASE": 
     {
@@ -20,9 +22,11 @@
         "it":"Inserisci la tua parola da tradurre in italiano",
         "pt":"Digite sua palavra para traduzir para o português",
         "de":"Geben Sie Ihr Wort ein, um es ins Deutsche zu übersetzen ",
+        "ru": "Введите свое слово для перевода на русский язык",
+        "sv": "Ange ditt ord för att översätta till svenska",
         "ja":"日本語に翻訳する単語を入力してください",
         "ko":"한국어로 번역할 단어를 입력하세요 ",
-        "cn":"输入您的单词以翻译成普通话"
+        "zh-CN":"输入您的单词以翻译成普通话"
     },
     "Info": 
     {

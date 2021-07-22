@@ -31,13 +31,22 @@ async def lang(ctx):
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
     
-    msg = await client.wait_for("message", check=check)
+    msg = await client.wait_for("message", check=check, timeout=30)
 
     if msg.content in configData["LANGUAGES"]:
         os.environ["LANG"] = msg.content
         LANG = configData["LANGUAGES"][msg.content]
         await ctx.send (LANG)
         print(LANG)
+    
+    elif msg.content.lower() == "cn":
+        LANG = "zh-CN"
+        if LANG in configData["LANGUAGES"]:
+            os.environ["LANG"] = LANG
+            LANG = configData["LANGUAGES"][LANG]
+            await ctx.send (LANG)
+            print(LANG)
+        
     else:
         await ctx.send('The selected language does not exist, enter again, you can check in the help command to know the available languages')
         
