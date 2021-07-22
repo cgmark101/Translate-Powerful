@@ -53,14 +53,16 @@ async def lang(ctx):
         
 #help command
 @client.command()
-async def embed(ctx):
-    embed=discord.Embed(title="Help menu", url="https://realdrewdata.medium.com/", description="English - en", color=discord.Color.red())
-    await ctx.send(embed=embed)
-
+async def helper(ctx):
+    helper=discord.Embed(title="Help Menu", url="https://www.google.com", description="Trasitor Help Menu - Commands and example of use", color=0x006eff)
+    helper.set_author(name="Trasitor  Auto-Translate Bot", url="https://translate.google.com/", icon_url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
+    helper.set_thumbnail(url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
+    helper.add_field(name="URL-WEB XD", value="In this web explain how to use commands and configuration")
+    await ctx.send(embed=helper)
 
 # Universal Translator
 @client.command()
-async def ts(ctx, aliases=['tss', 'traslate']):
+async def ts(ctx):
     LANG = os.getenv("LANG")
     await ctx.send(configData["LANGUAGES_PHRASE"][LANG])
     
