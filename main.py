@@ -47,6 +47,37 @@ async def lang(ctx):
         await ctx.send('The language has been set in english successfully')
         print('The language has been set in english successfully')
         
+    if msg.content == 'fr':
+        LANGUAGE = "fr"
+        await ctx.send('La langue a été réglée avec succès sur le français')
+        
+    if msg.content == 'ita':
+        LANGUAGE = "ita"
+        await ctx.send('La lingua è stata impostata correttamente su italiano')
+        
+    if msg.content == 'pt':
+        LANGUAGE = "pt"
+        await ctx.send('O idioma foi definido com sucesso para o português')
+        
+    if msg.content == 'ale':
+        LANGUAGE = "ale"
+        await ctx.send('Die Sprache wurde erfolgreich auf Deutsch eingestell')
+        
+    if msg.content == 'jp':
+        LANGUAGE = "jp"
+        await ctx.send('言語が日本語に正常に設定されました')
+        
+    if msg.content == 'kr':
+        LANGUAGE = "kr"
+        await ctx.send('언어가 한국어로 성공적으로 설정되었습니다.')
+        
+    if msg.content == 'ch':
+        LANGUAGE = "ch"
+        await ctx.send('语言已成功设置为普通话')
+        
+    else:
+        await ctx.send('The selected language does not exist, enter again, you can check in the help command to know the available languages')
+        
 
 
 
