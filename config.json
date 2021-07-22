@@ -6,5 +6,10 @@
         "Version":"1.0",
         "Author":"Fabián#0069",
         "Description":"Auto-translate bot opensource"
+    },
+    "LANGUAGES_PHRASE": 
+    {
+        "es":"Ingrese su palabra a traducir al español",
+        "en":"Enter your word to translate into English "
     }
 }
