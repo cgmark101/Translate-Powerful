@@ -10,6 +10,13 @@
     "LANGUAGES_PHRASE": 
     {
         "es":"Ingrese su palabra a traducir al español",
-        "en":"Enter your word to translate into English "
+        "en":"Enter your word to translate into English",
+        "fr":"Entrez votre mot à traduire en français",
+        "ita":"Inserisci la tua parola da tradurre in italiano",
+        "pt":"Digite sua palavra para traduzir para o português",
+        "ale":"Geben Sie Ihr Wort ein, um es ins Deutsche zu übersetzen ",
+        "jp":"日本語に翻訳する単語を入力してください",
+        "kr":"한국어로 번역할 단어를 입력하세요 ",
+        "ch":"输入您的单词以翻译成普通话"
     }
 }
