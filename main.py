@@ -18,7 +18,7 @@ client = commands.Bot(command_prefix=configData["PREFIX_DEFAULT"], description="
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Test'))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Google-Translate'))
     msg = "Transitor online"
     print(msg)
     print(os.getenv("LANG"))
@@ -45,7 +45,7 @@ async def lang(ctx):
 
 # Universal Translator
 @client.command()
-async def ts(ctx):
+async def ts(ctx, aliases=['tss', 'traslate']):
     LANG = os.getenv("LANG")
     await ctx.send(configData["LANGUAGES_PHRASE"][LANG])
     
@@ -57,7 +57,6 @@ async def ts(ctx):
     print(translator)
     await ctx.send (translator)
 
-    
  #Token
 token = os.getenv("DISCORD_TOKEN") 
 client.run(token)
