@@ -12,24 +12,23 @@ from typing import Optional
 with open ("./config.json") as configjsonFile:
     configData = json.load(configjsonFile)
     LANGUAGE = configData["LANGUAGE_DEFAULT"]
-    
-with open ("./config.json") as f:
-    prefixes = json.load(f)
-    PREFIX = prefixes["PREFIX_DEFAULT"]
+    PREFIX = configData["PREFIX_DEFAULT"]
+
+print(PREFIX)
 
 #Prefix
-client = commands.Bot(command_prefix=prefixes["PREFIX_DEFAULT"], description="Auto-translate Bot")
+client = commands.Bot(command_prefix=PREFIX, description="Auto-translate Bot")
 
 @client.event
 async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Test'))
     msg = "Transitor online"
     print(msg)
-    print(configData["LANGUAGE_DEFAULT"])
+    print(LANGUAGE)
       
 
 @client.command()
-async def language(ctx):
+async def lang(ctx):
     await ctx.send('Enter the new language, language endings can be found in the help command')
     
     def check(msg):
@@ -37,12 +36,12 @@ async def language(ctx):
     
     msg = await client.wait_for("message", check=check)
     if msg.content == 'es':
-        configData["LANGUAGE_DEFAULT"] = "es"
+        LANGUAGE = "es"
         await ctx.send ('El idioma se ha configurado en español exitosamente')
         print('El lenguaje se ha cambiado a español exitosamente')
     
     if msg.content == 'en':
-        configData["LANGUAGE_DEFAULT"] = "en"
+        LANGUAGE = "en"
         await ctx.send('The language has been set in english successfully')
         print('The language has been set in english successfully')
         
@@ -60,7 +59,7 @@ async def ts(ctx):
         return msg.author == ctx.author and msg.channel == ctx.channel
 
     msg = await client.wait_for("message", check=check)
-    translator = translate(msg.content, configData["LANGUAGE_DEFAULT"], 'auto')
+    translator = translate(msg.content, LANGUAGE, 'auto')
     print(translator)
     await ctx.send (translator)
 
