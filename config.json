@@ -1,12 +1,7 @@
 {
-    "LANGUAGE_DEFAULT":"en",
+    "DEFAULT_LANGUAGE":"en",
+    "LANGUAGES": ["es", "en", "fr", "ita", "pt", "ale", "jp", "kr", "ch"],
     "PREFIX_DEFAULT":"!",
-    "Info": 
-    {
-        "Version":"1.0",
-        "Author":"Fabián#0069",
-        "Description":"Auto-translate bot opensource"
-    },
     "LANGUAGES_PHRASE": 
     {
         "es":"Ingrese su palabra a traducir al español",
@@ -18,5 +13,11 @@
         "jp":"日本語に翻訳する単語を入力してください",
         "kr":"한국어로 번역할 단어를 입력하세요 ",
         "ch":"输入您的单词以翻译成普通话"
+    },
+    "Info": 
+    {
+        "Version":"1.0",
+        "Author":"Fabián#0069",
+        "Description":"Auto-translate bot opensource"
     }
 }

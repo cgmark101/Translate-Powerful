@@ -11,11 +11,12 @@ from typing import Optional
 #Json-Configs
 with open ("./config.json") as configjsonFile:
     configData = json.load(configjsonFile)
-    LANGUAGE = configData["LANGUAGE_DEFAULT"]
-    LANG_TS = configData["LANGUAGES_PHRASE"][LANGUAGE]
+    LANGUAGE = configData["LANGUAGES"]
     PREFIX = configData["PREFIX_DEFAULT"]
+    PRASE = configData["LANGUAGES_PHRASE"]
+    
 
-print(PREFIX)
+print(LANGUAGE)
 
 #Prefix
 client = commands.Bot(command_prefix=PREFIX, description="Auto-translate Bot")
@@ -54,7 +55,7 @@ async def lang(ctx):
 # Universal Translator
 @client.command()
 async def ts(ctx):
-    await ctx.send(LANG_TS)
+    await ctx.send('frase')
     
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
