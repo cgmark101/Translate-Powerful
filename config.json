@@ -1,7 +1,17 @@
 {
     "DEFAULT_LANGUAGE":"en",
-    "LANGUAGES": ["es", "en", "fr", "ita", "pt", "ale", "jp", "kr", "ch"],
     "PREFIX_DEFAULT":"!",
+    "LANGUAGES": {
+        "es": "El idioma se ha configurado en español exitosamente",
+        "en": "The language has been set in english successfully", 
+        "fr": "La langue a été réglée avec succès sur le français", 
+        "ita": "La lingua è stata impostata correttamente su italiano", 
+        "pt": "O idioma foi definido com sucesso para o português", 
+        "ale": "Die Sprache wurde erfolgreich auf Deutsch eingestell" , 
+        "jp": "言語が日本語に正常に設定されました", 
+        "kr": "언어가 한국어로 성공적으로 설정되었습니다.", 
+        "ch": "语言已成功设置为普通话"
+    },
     "LANGUAGES_PHRASE": 
     {
         "es":"Ingrese su palabra a traducir al español",
