@@ -6,8 +6,7 @@ from discord import message
 from discord.embeds import Embed
 from discord.ext import commands
 from discord.ext.commands.core import check, command
-from mtranslate import translate
-from typing import Optional
+from trans.mark1 import translate
 
 #Json-Configs
 with open ("./config.json") as configjsonFile:
