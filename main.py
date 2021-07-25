@@ -21,8 +21,8 @@ async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Google-Translate'))
     msg = "Transitor online"
     print(msg)
-      
 
+    
 @client.command()
 async def lang(ctx):
     await ctx.send('Enter the new language, language endings can be found in the help command')
@@ -58,6 +58,18 @@ async def helper(ctx):
     helper.add_field(name="URL-WEB XD", value="In this web explain how to use commands and configuration")
     await ctx.send(embed=helper)
 
+
+
+
+#Information Command
+@client.command()
+async def info(ctx):
+    info=discord.Embed(title="Bot information", url="https://realdrewdata.medium.com/", description="Information about transitor bot, version and authors", color=0x006eff)
+    info.add_field(name="Description", value=configData["Info"]["Description"])
+    info.add_field(name="Version", value=configData["Info"]["Version"])
+    info.add_field(name="Authors", value=configData["Info"]["Authors"])    
+    await ctx.send(embed=info)
+
 # Universal Translator
 @client.command()
 async def ts(ctx):
@@ -67,7 +79,7 @@ async def ts(ctx):
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
 
-    msg = await client.wait_for("message", check=check)
+    msg = await client.wait_for("message", check=check, timeout=30)
     translator = translate(msg.content, LANG, 'auto')
     print(translator)
     await ctx.send (translator)
