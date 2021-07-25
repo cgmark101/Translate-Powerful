@@ -14,7 +14,7 @@ with open ("./config.json") as configjsonFile:
 
 
 #Prefix
-client = commands.Bot(command_prefix=configData["PREFIX_DEFAULT"], description="Auto-translate Bot")
+client = commands.Bot(command_prefix=os.getenv("PREFIX_DEFAULT"), description="Auto-translate Bot")
 
 @client.event
 async def on_ready():
@@ -24,6 +24,7 @@ async def on_ready():
 
     
 @client.command()
+@commands.has_permissions(administrator=True)
 async def lang(ctx):
     await ctx.send('Enter the new language, language endings can be found in the help command')
     
@@ -48,6 +49,18 @@ async def lang(ctx):
         
     else:
         await ctx.send('The selected language does not exist, enter again, you can check in the help command to know the available languages')
+        
+        
+#@client.command()
+#@commands.has_permissions(administrator=True)
+#async def prefix_new(ctx):
+ #   await ctx.send('Now, enter the new prefix')
+    
+  #  def check(msg):
+   #     return msg.author == ctx.author and msg.channel == ctx.channel
+    #msg = await client.wait_for("message", check=check, timeout=30)
+    #os.environ["PREFIX_DEFAULT"] = msg.content =
+    #await ctx.send(f'Prefix, changed. New prefix "{msg.content}"')
         
 #help command
 @client.command()
