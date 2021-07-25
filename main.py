@@ -52,11 +52,13 @@ async def lang(ctx):
 #help command
 @client.command()
 async def helper(ctx):
-    helper=discord.Embed(title="Help Menu", url="https://www.google.com", description="Translate Help Menu - Commands and example of use", color=0x006eff)
-    helper.set_author(name="Translate  Auto-Translate Bot", url="https://translate.google.com/", icon_url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
+    helper=discord.Embed(title="Help Menu", url="https://translate.google.com/", description="Translate Help Menu - Commands and example of use", color=0x006eff)
+    helper.set_author(name="Translate", url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png", icon_url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
     helper.set_thumbnail(url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
-    helper.add_field(name="URL-WEB XD", value="In this web explain how to use commands and configuration")
+    helper.add_field(name="Commands", value="LINK", inline=True)
+    helper.add_field(name="Languages Supported", value="LINK", inline=False)
     await ctx.send(embed=helper)
+
 
 
 
