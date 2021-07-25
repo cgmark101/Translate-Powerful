@@ -14,19 +14,23 @@ with open ("./config.json") as configjsonFile:
 
 
 #Prefix
+
 client = commands.Bot(command_prefix=os.getenv("PREFIX_DEFAULT"), description="Auto-translate Bot")
+
 
 @client.event
 async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Google-Translate'))
-    msg = "Translate online"
+    msg = "Translate Powerful online"
     print(msg)
 
-    
+# Delete existing help command for create new help command with embed
+client.remove_command("help")
+
 @client.command()
 @commands.has_permissions(administrator=True)
 async def lang(ctx):
-    await ctx.send('Enter the new language, language endings can be found in the help command')
+    await ctx.send(f'{ctx.author.mention}: Enter the new language, language endings can be found in the help command')
     
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
@@ -48,29 +52,18 @@ async def lang(ctx):
             print(LANG)
         
     else:
-        await ctx.send('The selected language does not exist, enter again, you can check in the help command to know the available languages')
+        await ctx.send(f'{ctx.author.mention}: The selected language does not exist, enter again, you can check in the help command to know the available languages')
         
-        
-#@client.command()
-#@commands.has_permissions(administrator=True)
-#async def prefix_new(ctx):
- #   await ctx.send('Now, enter the new prefix')
-    
-  #  def check(msg):
-   #     return msg.author == ctx.author and msg.channel == ctx.channel
-    #msg = await client.wait_for("message", check=check, timeout=30)
-    #os.environ["PREFIX_DEFAULT"] = msg.content =
-    #await ctx.send(f'Prefix, changed. New prefix "{msg.content}"')
         
 #help command
 @client.command()
-async def helper(ctx):
-    helper=discord.Embed(title="Help Menu", url="https://translate.google.com/", description="Translate Help Menu - Commands and example of use", color=0x006eff)
-    helper.set_author(name="Translate", url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png", icon_url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
-    helper.set_thumbnail(url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
-    helper.add_field(name="Commands", value="LINK", inline=True)
-    helper.add_field(name="Languages Supported", value="LINK", inline=False)
-    await ctx.send(embed=helper)
+async def help(ctx):
+    help=discord.Embed(title="Help Menu", url="https://translate.google.com/", description="Translate Help Menu - Commands and example of use", color=0x006eff)
+    help.set_author(name="Translate", url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png", icon_url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
+    help.set_thumbnail(url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
+    help.add_field(name="Commands", value="LINK", inline=True)
+    help.add_field(name="Languages Supported", value="LINK", inline=False)
+    await ctx.send(embed=help)
 
 
 
@@ -81,7 +74,7 @@ async def helper(ctx):
 async def info(ctx):
     
     info=discord.Embed(title="Information Bot", url="https://translate.google.com/", description="Information about translate bot, version and authors", color=0x006eff)
-    info.set_author(name="Auto-Translate bot", url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png", icon_url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
+    info.set_author(name="Translate Powerful", url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png", icon_url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
     info.set_thumbnail(url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
     info.add_field(name="Description", value=configData["Info"]["Description"], inline=False)
     info.add_field(name="Version", value=configData["Info"]["Version"], inline=False)
