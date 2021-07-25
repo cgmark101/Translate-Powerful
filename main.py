@@ -19,7 +19,7 @@ client = commands.Bot(command_prefix=configData["PREFIX_DEFAULT"], description="
 @client.event
 async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Google-Translate'))
-    msg = "Transitor online"
+    msg = "Translate online"
     print(msg)
 
     
@@ -52,8 +52,8 @@ async def lang(ctx):
 #help command
 @client.command()
 async def helper(ctx):
-    helper=discord.Embed(title="Help Menu", url="https://www.google.com", description="Trasitor Help Menu - Commands and example of use", color=0x006eff)
-    helper.set_author(name="Trasitor  Auto-Translate Bot", url="https://translate.google.com/", icon_url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
+    helper=discord.Embed(title="Help Menu", url="https://www.google.com", description="Translate Help Menu - Commands and example of use", color=0x006eff)
+    helper.set_author(name="Translate  Auto-Translate Bot", url="https://translate.google.com/", icon_url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
     helper.set_thumbnail(url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
     helper.add_field(name="URL-WEB XD", value="In this web explain how to use commands and configuration")
     await ctx.send(embed=helper)
@@ -64,11 +64,15 @@ async def helper(ctx):
 #Information Command
 @client.command()
 async def info(ctx):
-    info=discord.Embed(title="Bot information", url="https://realdrewdata.medium.com/", description="Information about transitor bot, version and authors", color=0x006eff)
-    info.add_field(name="Description", value=configData["Info"]["Description"])
-    info.add_field(name="Version", value=configData["Info"]["Version"])
-    info.add_field(name="Authors", value=configData["Info"]["Authors"])    
+    
+    info=discord.Embed(title="Information Bot", url="https://translate.google.com/", description="Information about translate bot, version and authors", color=0x006eff)
+    info.set_author(name="Auto-Translate bot", url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png", icon_url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
+    info.set_thumbnail(url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
+    info.add_field(name="Description", value=configData["Info"]["Description"], inline=False)
+    info.add_field(name="Version", value=configData["Info"]["Version"], inline=False)
+    info.add_field(name="Authors", value=configData["Info"]["Authors"], inline=False)
     await ctx.send(embed=info)
+
 
 # Universal Translator
 @client.command()
