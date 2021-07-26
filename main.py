@@ -6,11 +6,20 @@ from discord import message
 from discord import activity
 from discord import guild
 from discord import embeds
-from discord.activity import Activity
+from discord.activity import Activity, create_activity
 from discord.embeds import Embed
 from discord.ext import commands
+from discord.ext.commands.converter import _get_from_guilds
 from discord.ext.commands.core import check, command
+from discord.ext.commands.errors import GuildNotFound
 from trans.mark1 import translate
+from tinydb import TinyDB, Query
+from tinydb.operations import delete
+
+#Database
+db = TinyDB('db.json')
+
+
 
 #Json-Configs
 with open ("./config.json") as configjsonFile:
@@ -21,6 +30,9 @@ with open ("./config.json") as configjsonFile:
 
 client = commands.Bot(command_prefix=os.getenv("PREFIX_DEFAULT"), description="Auto-translate Bot")
 
+@client.event
+async def on_guild_join(Guild):
+    print(f'I have joined a {str(Guild.name)}')
 
 @client.event
 async def on_ready():

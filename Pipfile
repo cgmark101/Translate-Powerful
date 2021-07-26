@@ -8,6 +8,7 @@ name = "pypi"
 python-dotenv = "*"
 mtranslate = "*"
 requests = "*"
+tinydb = "*"
 
 [dev-packages]
 
