@@ -3,6 +3,9 @@ import discord
 import os
 import json
 from discord import message
+from discord import activity
+from discord import guild
+from discord.activity import Activity
 from discord.embeds import Embed
 from discord.ext import commands
 from discord.ext.commands.core import check, command
@@ -20,7 +23,7 @@ client = commands.Bot(command_prefix=os.getenv("PREFIX_DEFAULT"), description="A
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Google-Translate'))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"on {str(len(client.guilds))} servers"))
     msg = "Translate Powerful online"
     print(msg)
 
