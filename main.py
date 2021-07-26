@@ -5,6 +5,7 @@ import json
 from discord import message
 from discord import activity
 from discord import guild
+from discord import embeds
 from discord.activity import Activity
 from discord.embeds import Embed
 from discord.ext import commands
@@ -33,7 +34,9 @@ client.remove_command("help")
 @client.command()
 @commands.has_permissions(administrator=True)
 async def lang(ctx):
-    await ctx.send(f'{ctx.author.mention}: Enter the new language, language endings can be found in the help command')
+    trans=discord.Embed(title="Language set", url="https://translate.google.com/", description=f'{ctx.author.mention}: Enter the new language, language endings can be found in the help command')
+
+    await ctx.send(embed=trans)
     
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
@@ -43,7 +46,8 @@ async def lang(ctx):
     if msg.content.lower() in configData["LANGUAGES"]:
         os.environ["LANG"] = msg.content
         LANG = configData["LANGUAGES"][msg.content]
-        await ctx.send (LANG)
+        trans=discord.Embed(title="Language set", description=LANG)
+        await ctx.send (embed=trans)
         print(LANG)
     
     elif msg.content.lower() == "cn":
@@ -55,7 +59,8 @@ async def lang(ctx):
             print(LANG)
         
     else:
-        await ctx.send(f'{ctx.author.mention}: The selected language does not exist, enter again, you can check in the help command to know the available languages')
+        trans=discord.Embed(title="Translate Error", description=f'{ctx.author.mention}: The selected language does not exist, enter again, you can check in the help command to know the available languages')
+        await ctx.send(embed=trans)
         
         
 #help command
