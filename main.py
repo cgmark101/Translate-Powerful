@@ -33,10 +33,13 @@ client = commands.Bot(command_prefix=os.getenv("PREFIX_DEFAULT"), description="A
 @client.event
 async def on_guild_join(Guild):
     print(f'I have joined a {str(Guild.name)}')
-    db.insert({'name_server': str(Guild.name)})
-    db.insert({'id_server': int(Guild.id)})
-    db.insert({'Owner': int(Guild.owner.id)})
-    
+    db.insert({
+        'name_server':Guild.name,
+        'id_server':Guild.id,
+        'owner':Guild.owner
+    })
+    insert = db.insert
+    print(insert)
 
 @client.event
 async def on_ready():
