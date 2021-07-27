@@ -35,8 +35,7 @@ async def on_guild_join(Guild):
     print(f'I have joined a {str(Guild.name)}')
     db.insert({
         'name_server':Guild.name,
-        'id_server':Guild.id,
-        'owner':Guild.owner
+        'id_server':Guild.id
     })
     insert = db.insert
     print(insert)
@@ -53,7 +52,7 @@ client.remove_command("help")
 @client.command()
 @commands.has_permissions(administrator=True)
 async def lang(ctx):
-    trans=discord.Embed(title="Language set", url="https://translate.google.com/", description=f'{ctx.author.mention}: Enter the new language, language endings can be found in the help command')
+    trans=discord.Embed(title="Language set", url="https://translate.google.com/", description=f'{ctx.author.mention}: Enter the new language, language endings can be found in the help command', color=0x006eff)
 
     await ctx.send(embed=trans)
     
@@ -65,7 +64,7 @@ async def lang(ctx):
     if msg.content.lower() in configData["LANGUAGES"]:
         os.environ["LANG"] = msg.content
         LANG = configData["LANGUAGES"][msg.content]
-        trans=discord.Embed(title="Language set", description=LANG)
+        trans=discord.Embed(title="Language set", description=LANG, color=0x006eff)
         await ctx.send (embed=trans)
         print(LANG)
     
@@ -78,7 +77,7 @@ async def lang(ctx):
             print(LANG)
         
     else:
-        trans=discord.Embed(title="Translate Error", description=f'{ctx.author.mention}: The selected language does not exist, enter again, you can check in the help command to know the available languages')
+        trans=discord.Embed(title="Translate Error", description=f'{ctx.author.mention}: The selected language does not exist, enter again, you can check in the help command to know the available languages', color=0x006eff)
         await ctx.send(embed=trans)
         
         
@@ -91,7 +90,6 @@ async def help(ctx):
     help.add_field(name="Commands", value="LINK", inline=True)
     help.add_field(name="Languages Supported", value="LINK", inline=False)
     await ctx.send(embed=help)
-
 
 
 
