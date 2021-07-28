@@ -111,15 +111,17 @@ async def info(ctx):
 @client.command()
 async def ts(ctx):
     LANG = os.getenv("LANG")
-    await ctx.send(configData["LANGUAGES_PHRASE"][LANG])
+    phrase_language = configData["LANGUAGES_PHRASE"][LANG]
+    phrase_embed =discord.Embed(title='Translate', description=f'{phrase_language}', color=0x006eff)
+    await ctx.send(embed=phrase_embed)
     
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
 
     msg = await client.wait_for("message", check=check, timeout=30)
     translator = translate(msg.content, LANG, 'auto')
-    print(translator)
-    await ctx.send (translator)
+    translator_embed=discord.Embed(title="Translate", description=f'{ctx.author}: {translator}', color=0x006eff)
+    await ctx.send (embed=translator_embed)
 
  #Token
 token = os.getenv("DISCORD_TOKEN") 
