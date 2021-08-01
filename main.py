@@ -128,4 +128,5 @@ async def ts(ctx):
 
  #Token
 token = os.getenv("DISCORD_TOKEN") 
+print(token)
 client.run(token)
