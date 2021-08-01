@@ -85,8 +85,8 @@ async def lang(ctx):
 @client.command()
 async def help(ctx):
     help=discord.Embed(title="Help Menu", url="https://translate.google.com/", description="Translate Help Menu - Commands and example of use", color=0x006eff)
-    help.set_author(name="Translate", url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png", icon_url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
-    help.set_thumbnail(url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
+    help.set_author(name="Translate", url="https://i.ibb.co/zQHW1m2/translateicon.png", icon_url="https://i.ibb.co/zQHW1m2/translateicon.png")
+    help.set_thumbnail(url="https://i.ibb.co/zQHW1m2/translateicon.png")
     help.add_field(name="Commands", value="LINK", inline=True)
     help.add_field(name="Languages Supported", value="LINK", inline=False)
     await ctx.send(embed=help)
@@ -99,8 +99,7 @@ async def help(ctx):
 async def info(ctx):
     
     info=discord.Embed(title="Information Bot", url="https://translate.google.com/", description="Information about translate bot, version and authors", color=0x006eff)
-    info.set_author(name="Translate Powerful", url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png", icon_url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
-    info.set_thumbnail(url="https://i.ibb.co/YZxpyz2/google-translate-icon-by-spideyforever2005-dc0xsrb.png")
+    info.set_author(name="Translate Powerful", url="https://i.ibb.co/zQHW1m2/translateicon.png", icon_url="https://i.ibb.co/zQHW1m2/translateicon.png")
     info.add_field(name="Description", value=configData["Info"]["Description"], inline=False)
     info.add_field(name="Version", value=configData["Info"]["Version"], inline=False)
     info.add_field(name="Authors", value=configData["Info"]["Authors"], inline=False)
