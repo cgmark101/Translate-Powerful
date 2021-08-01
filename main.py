@@ -53,7 +53,7 @@ client.remove_command("help")
 @commands.has_permissions(administrator=True)
 async def lang(ctx):
     trans=discord.Embed(title="Language set", url="https://translate.google.com/", description=f'{ctx.author.mention}: Enter the new language, language endings can be found in the help command', color=0x006eff)
-
+    trans.set_author(name="Language set", url="https://i.ibb.co/zQHW1m2/translateicon.png", icon_url="https://i.ibb.co/zQHW1m2/translateicon.png")
     await ctx.send(embed=trans)
     
     def check(msg):
@@ -65,6 +65,7 @@ async def lang(ctx):
         os.environ["LANG"] = msg.content
         LANG = configData["LANGUAGES"][msg.content]
         trans=discord.Embed(title="Language set", description=LANG, color=0x006eff)
+        trans.set_author(name="Language set", url="https://i.ibb.co/zQHW1m2/translateicon.png", icon_url="https://i.ibb.co/zQHW1m2/translateicon.png")
         await ctx.send (embed=trans)
         print(LANG)
     
@@ -78,6 +79,7 @@ async def lang(ctx):
         
     else:
         trans=discord.Embed(title="Translate Error", description=f'{ctx.author.mention}: The selected language does not exist, enter again, you can check in the help command to know the available languages', color=0x006eff)
+        trans.set_author(name="Language set", url="https://i.ibb.co/zQHW1m2/translateicon.png", icon_url="https://i.ibb.co/zQHW1m2/translateicon.png")
         await ctx.send(embed=trans)
         
         
@@ -112,6 +114,7 @@ async def ts(ctx):
     LANG = os.getenv("LANG")
     phrase_language = configData["LANGUAGES_PHRASE"][LANG]
     phrase_embed =discord.Embed(title='Translate', description=f'{phrase_language}', color=0x006eff)
+    phrase_embed.set_author(name="Phrase to translate", url="https://i.ibb.co/zQHW1m2/translateicon.png", icon_url="https://i.ibb.co/zQHW1m2/translateicon.png")
     await ctx.send(embed=phrase_embed)
     
     def check(msg):
@@ -120,6 +123,7 @@ async def ts(ctx):
     msg = await client.wait_for("message", check=check, timeout=30)
     translator = translate(msg.content, LANG, 'auto')
     translator_embed=discord.Embed(title="Translate", description=f'{ctx.author}: {translator}', color=0x006eff)
+    translator_embed.set_author(name="Translate", url="https://i.ibb.co/zQHW1m2/translateicon.png", icon_url="https://i.ibb.co/zQHW1m2/translateicon.png")
     await ctx.send (embed=translator_embed)
 
  #Token
